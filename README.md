@@ -1,1 +1,0 @@
-# komus-demo
