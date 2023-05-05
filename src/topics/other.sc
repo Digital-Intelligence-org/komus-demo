@@ -1,5 +1,19 @@
 theme: /OtherQuestions
     
-    state: /Complaints
+    state: Complaints
         intent!: /Complaints
-        a: a13.000.013
+        script: 
+            answer("a13.000.012");
+            $dialer.hangUp()
+        
+    state: AskForManager
+        intent!: /AskForManager
+        script: 
+            answer("a13.000.013");
+            $dialer.hangUp()
+        
+    state: TransferToOperator
+        intent!: /TransferToOperator
+        script: 
+            answer("a13.000.014");
+            $dialer.hangUp()

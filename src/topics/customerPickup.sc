@@ -2,45 +2,52 @@ theme: /CustomerPickup
     
     state: PickupGeneral
         intent!: /PickupGeneral
-        a: a13.000.005
+        script: 
+            answer("a13.000.005");
         
         state: /PickupConditions
             intent!: /PickupConditions
-            a: a13.000.003
+            script:
+                answer("a13.000.003");
             
             state: Agree
                 intent: /Yes
                 script:
-                    sendSMS(телефон, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
-                a: a13.000.004
+                    sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
+                    answer("a13.000.004");
                 go!: ../AskForQuestions
                 
             state: Disagree
                 intent: /No
                 go!: ../AskForQuestions
                 
-        state: /StorageTime
+        state: StorageTime
             intent!: /StorageTime
-            a: a13.000.018
+            script:
+                answer("a13.000.018");
             go!: ./AskForQuestions
             
-        state: /PriceOfOrderForPickup
+        state: PriceOfOrderForPickup
             intent!: /PriceOfOrderForPickup
-            a: a13.000.019
+            script:
+                answer("a13.000.019");
             go!: ./AskForQuestions
             
-        state: AskForQuestions
+        state: AskForQuestions || noContext=true
             script:
                 $session.questionsPrompter = ++1 || 1;
                 switch ($session.questionsPrompter) {
                     case 1:
-                        $reactions.answer("a13.000.006");
+                        answer("a13.000.006");
                     case 2:
-                        $reactions.answer("a13.000.007");
-                    default:
-                        $reactions.answer("a13.000.008");
+                        answer("a13.000.007");
+                    case 3:
+                        answer("a13.000.008");
+                        $session.questionsPrompter = 0;
                     }
             
-        state: /PickupOther
-            event: NoMatch
-            a: a13.000.011
+        state: PickupOther
+            intent: /PickupOther
+            script:
+                answer("a13.000.011");
+                
