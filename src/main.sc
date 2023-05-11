@@ -17,13 +17,13 @@ init:
     };
     
     bind("preProcess", function($context) {
-        if ($.session.lastState === "/Start" && $context.currentState !== "/Hello") {
+        if ($.session.lastState === "/Start" && $.currentState !== "/Hello") {
             answer("a13.000.002")}
     });
     
     bind("postProcess", function($context) {
         if ($context.currentState !== "/CustomerPickup/PickupGeneral/AskForQuestions") {
-            $.session.lastState = $context.currentState;
+            $.session.lastState = $.currentState;
             }
         $dialer.setNoInputTimeout($.session.setNoInputTimeout || $.injector.setNoInputTimeout);
         delete $.session.setNoInputTimeout;
@@ -52,7 +52,7 @@ theme: /
     state: NoMatch || noContext=true
         event!: noMatch
         script:
-            $session.NoMatchCounter = $session.NoMatchCounter ? $session.NoMatchCounter + 1 : 1;
+            $session.NoMatchCounter = ++$session.NoMatchCounter || 1;;
             switch ($session.NoMatchCounter) {
                 case 1:
                     answer("a13.000.015");
@@ -60,7 +60,7 @@ theme: /
                 case 2:
                     answer("a13.000.016");
                     break;
-                case 3:
+                default:
                     answer("a13.000.017");
                     $reactions.transition("/Hangup");;
                 }
@@ -69,8 +69,7 @@ theme: /
         event!: speechNotRecognized
         if: $session.lastState === "/SpeechNotRecognized"
             go!: /Hangup
-        else:
-            go!: {{$session.lastState}}
+        go!: {{$session.lastState}}
             
     state: Hangup
         event!: hangup
