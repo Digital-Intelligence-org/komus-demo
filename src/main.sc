@@ -1,25 +1,30 @@
-require: slotfilling/slotFilling.sc
-  module = sys.zb-common
-  
 require: topics/customerPickup.sc
 require: topics/other.sc
+require: scripts/functions.js
+
+require: dicts/answers.yaml
+  var = $answers
+  
+require: patterns.sc
+  module = sys.zb-common
 
 init:
-    # bind("preProcess", function($context) {
-    #     $.session.dialog = $.session.dialog || [];
-    #     if ($.request.query || ($.session.dialog.length
-    #         && $.session.dialog[$.session.dialog.length - 1].indexOf("КЛИЕНТ") === -1)) {
-    #         $.session.dialog.push("КЛИЕНТ: " + ($.request.query || "<не распознано>") + "\n");
-    #     }
-    #     if ($.currentState.indexOf("/Repeat") === -1) $.session.repeatArray = [];
-    #     if ($.currentState.indexOf("/Objection") !== -1) {
-    #         $.session.objectionCount = $.session.objectionCount ? $.session.objectionCount + 1 : 1;
-    #     }
-    #     # if ($.session.objectionCount === 3) { $.temp.targetState = "/ObjectionProcessed"; }
-    # });
+    
+    $global.$ = {
+        __noSuchProperty__: function(property) {
+            return $jsapi.context()[property];
+        }
+    };
+    
+    bind("preProcess", function($context) {
+        if ($.session.lastState === "/Start" && $context.currentState !== "/Hello") {
+            answer("a13.000.002")}
+    });
     
     bind("postProcess", function($context) {
-        $.session.lastState = $context.currentState;
+        if ($context.currentState !== "/CustomerPickup/PickupGeneral/AskForQuestions") {
+            $.session.lastState = $context.currentState;
+            }
         $dialer.setNoInputTimeout($.session.setNoInputTimeout || $.injector.setNoInputTimeout);
         delete $.session.setNoInputTimeout;
     });
@@ -30,41 +35,49 @@ theme: /
         q!: $regex</start>
         script:
             $session.phoneNumber = $dialer.getCaller();
-            $.session.setNoInputTimeout = 3000;
+            $session.setNoInputTimeout = 3000;
         
 
     state: Hello
-        intent!: /Hello
+        # intent!: /Hello
+        q!: Hello
         script:
             answer("a13.000.001");
         
-    state: Repeat
-        intent!: /Repeat
+    state: Repeat || noContext=true
+        # intent!: /Repeat
+        q!: Repeat
         go!: {{$session.lastState}}
 
     state: NoMatch || noContext=true
         event!: noMatch
         script:
-            $session.NoMatchCounter = ++1 || 1;
+            $session.NoMatchCounter = $session.NoMatchCounter ? $session.NoMatchCounter + 1 : 1;
             switch ($session.NoMatchCounter) {
                 case 1:
                     answer("a13.000.015");
+                    break;
                 case 2:
                     answer("a13.000.016");
+                    break;
                 case 3:
                     answer("a13.000.017");
-                    botHangup();
+                    $reactions.transition("/Hangup");;
                 }
     
     state: SpeechNotRecognized || noContext=true
         event!: speechNotRecognized
         if: $session.lastState === "/SpeechNotRecognized"
-            script:
-                botHangup();
+            go!: /Hangup
         else:
             go!: {{$session.lastState}}
             
     state: Hangup
+        event!: hangup
         event!: botHangup
         script:
+            $dialer.hangUp()
+            if ($.request.channelType === "chatwidget") {
+                $reactions.answer("Закрыл сессию");
+                }
             $jsapi.stopSession();

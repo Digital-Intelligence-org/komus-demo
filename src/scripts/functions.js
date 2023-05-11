@@ -1,7 +1,6 @@
 function answer(answerId) {
     var url = $.injector.selectel + $answers[answerId].audio;
     var text = $answers[answerId].text;
-    $.session.dialog.push("БОТ: " + tts + "\n");
     if (testMode()) {
         $reactions.answer(answerId);
     } else if ($.request.channelType === "chatwidget") {
@@ -9,6 +8,12 @@ function answer(answerId) {
     } 
 }
 
-function sendSms() {
-    
+function sendSMS(phoneNumber, text) {
+    var reply = {
+      "type": "sms",
+      "text": text,
+      "destination": phoneNumber
+    };
+    $.response.replies = $.response.replies || [];
+    $.response.replies.push(reply);
 }
