@@ -17,7 +17,7 @@ init:
     };
     
     bind("preProcess", function($context) {
-        if ($.session.lastState === "/Start" && $.currentState !== "/Hello") {
+        if ($.session.lastState === "/Start" && $.currentState !== "/Hello" && $.currentState !== "/SpeechNotRecognized") {
             answer("a13.000.002")};
         if (_.contains(["/CustomerPickup/PickupGeneral/PickupConditions/Agree", "/CustomerPickup/PickupGeneral/StorageTime", 
             "/CustomerPickup/PickupGeneral/PriceOfOrderForPickup"], $.currentState)) {
@@ -75,7 +75,7 @@ theme: /
             go!: /Hangup
         elseif: $session.lastState === "/Start"
             script:
-                answer("a13.000.002");
+                answer("a13.000.001");
         else:
             go!: {{$session.lastState}}
             
