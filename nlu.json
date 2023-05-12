@@ -81,6 +81,8 @@
       "text" : "есть"
     }, {
       "text" : "да, есть вопросы"
+    }, {
+      "text" : "да давайте"
     } ],
     "classificationRules" : {
       "refs" : [ ]

@@ -21,9 +21,9 @@ theme: /CustomerPickup
                 intent: /Yes
                 # q: Yes
                 script:
-                    # var reply = sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
-                    # $.response.replies = $.response.replies || [];
-                    # $.response.replies.push(reply);
+                    var reply = sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
+                    $.response.replies = $.response.replies || [];
+                    $.response.replies.push(reply);
                     answer("a13.000.004");
                 go!: /CustomerPickup/PickupGeneral/AskForQuestions
                 
