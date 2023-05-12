@@ -43,8 +43,10 @@ theme: /
         
 
     state: Hello
-        intent!: /Hello
+        intent: /Hello
         # q!: Hello
+        if: $.session.lastState === "/NoMatch"
+            go!: /NoMatch
         script:
             answer("a13.000.001");
         

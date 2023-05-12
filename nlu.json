@@ -151,7 +151,7 @@
     "priority" : 0
   }, {
     "path" : "/Complaints",
-    "enabled" : true,
+    "enabled" : false,
     "shared" : false,
     "phrases" : [ {
       "text" : "как мне вернуть товар, если я его оплатил бонусы"

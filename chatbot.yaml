@@ -16,5 +16,5 @@ injector:
 
 nlp:
   intentNoMatchThresholds:
-    phrases: 0.2
+    phrases: 0.45
     patterns: 0.2
