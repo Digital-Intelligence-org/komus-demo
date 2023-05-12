@@ -73,7 +73,11 @@ theme: /
         event!: speechNotRecognized
         if: $session.lastState === "/SpeechNotRecognized"
             go!: /Hangup
-        go!: {{$session.lastState}}
+        elseif: $session.lastState === "/Start"
+            script:
+                answer("a13.000.002");
+        else:
+            go!: {{$session.lastState}}
             
     state: Hangup
         event!: hangup
