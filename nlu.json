@@ -1,13 +1,13 @@
 {
   "project" : {
-    "id" : "lt_747-247921931-gpN",
-    "name" : "lt_747-247921931-gpN",
+    "id" : "lt_747-1000069725-TYr",
+    "name" : "lt_747-1000069725-TYr",
     "folder" : "/platform"
   },
   "settings" : {
     "language" : "ru",
     "spellingCorrection" : false,
-    "classificationAlgorithm" : "sts",
+    "classificationAlgorithm" : "transformer",
     "timezone" : "Europe/Moscow",
     "extendedSettings" : {
       "tokenizerEngine" : "mystem",
@@ -15,8 +15,8 @@
     },
     "shared" : false,
     "validation" : {
-      "phraseValidationEnabled" : true,
-      "answerValidationEnabled" : true,
+      "phraseValidationEnabled" : false,
+      "answerValidationEnabled" : false,
       "phraseValidationThreshold" : 0.5,
       "answerValidationThreshold" : 0.8
     }
@@ -77,6 +77,10 @@
       "text" : "да, пожалуйста"
     }, {
       "text" : "да, спасибо"
+    }, {
+      "text" : "есть"
+    }, {
+      "text" : "да, есть вопросы"
     } ],
     "classificationRules" : {
       "refs" : [ ]
@@ -97,6 +101,10 @@
       "text" : "нет, спасибо"
     }, {
       "text" : "не надо отправлять"
+    }, {
+      "text" : "нет вопросов"
+    }, {
+      "text" : "нет, больше ничего не нужно"
     } ],
     "classificationRules" : {
       "refs" : [ ]
@@ -401,6 +409,10 @@
       "text" : "Самовывоз в любое время, когда магазин работает, доступен?"
     }, {
       "text" : "Можно ли отказаться от товара в пункте выдачи, если оформлял самовывоз?"
+    }, {
+      "text" : "Это вопрос по самовывозу. Заказ хранится пять рабочих дней?"
+    }, {
+      "text" : "Можно сделать платный самовывоз, если стоимость заказа меньше пятисот рублей?"
     } ],
     "classificationRules" : {
       "refs" : [ ]
@@ -448,7 +460,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "path" : "/PriceOfOrderFor",
+    "path" : "/PriceOfOrderForPickup",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
@@ -485,6 +497,8 @@
       "text" : "Самовывоз от какой суммы можно оформить?"
     }, {
       "text" : "Почему не доступен самовывоз ручки за 2 рубля?"
+    }, {
+      "text" : " если стоимость заказа меньше пятисот рублей?"
     } ],
     "classificationRules" : {
       "refs" : [ ]

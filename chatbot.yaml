@@ -6,11 +6,13 @@ language: ru
 
 tests:
   include:
-    - test.xml
+    - "customerPickup.xml"
+    - "other.xml"
+    - "main.xml"
 
 injector:
     setNoInputTimeout: 10000
-    selectel: "https://405120.selcdn.ru/xxx/"
+    selectel: "https://405120.selcdn.ru/Komus_demo/"
 
 nlp:
   intentNoMatchThresholds:

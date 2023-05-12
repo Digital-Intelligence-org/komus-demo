@@ -5,7 +5,9 @@ function answer(answerId) {
         $reactions.answer(answerId);
     } else if ($.request.channelType === "chatwidget") {
         $reactions.answer(text);
-    } 
+    } else {
+        $reactions.audio(url);
+    }
 }
 
 function sendSMS(phoneNumber, text) {
@@ -14,6 +16,5 @@ function sendSMS(phoneNumber, text) {
       "text": text,
       "destination": phoneNumber
     };
-    $.response.replies = $.response.replies || [];
-    $.response.replies.push(reply);
+    return reply;
 }

@@ -18,7 +18,11 @@ init:
     
     bind("preProcess", function($context) {
         if ($.session.lastState === "/Start" && $.currentState !== "/Hello") {
-            answer("a13.000.002")}
+            answer("a13.000.002")};
+        if (_.contains(["/CustomerPickup/PickupGeneral/PickupConditions/Agree", "/CustomerPickup/PickupGeneral/StorageTime", 
+            "/CustomerPickup/PickupGeneral/PriceOfOrderForPickup"], $.currentState)) {
+            $.session.lastState = $context.currentState;
+        }
     });
     
     bind("postProcess", function($context) {
@@ -39,14 +43,14 @@ theme: /
         
 
     state: Hello
-        # intent!: /Hello
-        q!: Hello
+        intent!: /Hello
+        # q!: Hello
         script:
             answer("a13.000.001");
         
     state: Repeat || noContext=true
-        # intent!: /Repeat
-        q!: Repeat
+        intent!: /Repeat
+        # q!: Repeat
         go!: {{$session.lastState}}
 
     state: NoMatch || noContext=true

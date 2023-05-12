@@ -1,8 +1,8 @@
 theme: /CustomerPickup
     
     state: PickupGeneral
-        # intent!: /PickupGeneral
-        q!: PickupGeneral
+        intent!: /PickupGeneral
+        # q!: PickupGeneral
         script: 
             if ($session.lastState == "/CustomerPickup/PickupGeneral") {
                 answer("a13.000.011");
@@ -12,52 +12,38 @@ theme: /CustomerPickup
             }
         
         state: PickupConditions
-            # intent!: /PickupConditions
-            q!: PickupConditions
+            intent!: /PickupConditions
+            # q!: PickupConditions
             script:
                 answer("a13.000.003");
-                
-            state: YesOrNo
-                # intent: /Yes
-                # intent: /No
-                q: Yes : Yes
-                q: No : No
-                if: $parseTree._Root == "Yes"
-                    script:
-                        # sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
-                        answer("a13.000.004");
-                        $session.lastState = $context.currentState;
+            
+            state: Agree
+                intent: /Yes
+                # q: Yes
+                script:
+                    # var reply = sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
+                    # $.response.replies = $.response.replies || [];
+                    # $.response.replies.push(reply);
+                    answer("a13.000.004");
                 go!: /CustomerPickup/PickupGeneral/AskForQuestions
                 
-            
-            # state: Agree
-            #     # intent: /Yes
-            #     q: Yes
-            #     script:
-            #         sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
-            #         answer("a13.000.004");
-            #         $session.lastState = $context.currentState;
-            #     go!: /CustomerPickup/PickupGeneral/AskForQuestions
-                
-            # state: Disagree
-            #     # intent: /No
-            #     q: No
-            #     go!: /CustomerPickup/PickupGeneral/AskForQuestions
+            state: Disagree
+                intent: /No
+                # q: No
+                go!: /CustomerPickup/PickupGeneral/AskForQuestions
                 
         state: StorageTime
-            # intent!: /StorageTime
-            q!: StorageTime
+            intent!: /StorageTime
+            # q!: StorageTime
             script:
                 answer("a13.000.018");
-                $session.lastState = $context.currentState;
             go!: ../AskForQuestions
             
         state: PriceOfOrderForPickup
-            # intent!: /PriceOfOrderForPickup
-            q!: PriceOfOrderForPickup
+            intent!: /PriceOfOrderForPickup
+            # q!: PriceOfOrderForPickup
             script:
                 answer("a13.000.019");
-                $session.lastState = $context.currentState;
             go!: ../AskForQuestions
             
         state: AskForQuestions 
@@ -75,31 +61,17 @@ theme: /CustomerPickup
                         $session.questionsPrompter = 0;
                         break;
                     }
-            
-            state: YesOrNo
-                # intent: /Yes
-                q: Yes : Yes
-                # intent: /No
-                q: No : No
-                if: $parseTree._Root == "Yes"
-                    script:
-                        answer("a13.000.009");
-                else:
-                    script:
-                        answer("a13.000.010");
-                    go!: /Hangup
                 
+            state: Yes
+                intent: /Yes
+                # q: Yes
+                script:
+                    answer("a13.000.009");
                 
-            # state: Yes
-            #     # intent: /Yes
-            #     q: Yes
-            #     script:
-            #         answer("a13.000.009");
-                
-            # state: No
-            #     # intent: /No
-            #     q: No
-            #     script:
-            #         answer("a13.000.010");
-            #     go!: /Hangup
+            state: No
+                intent: /No
+                # q: No
+                script:
+                    answer("a13.000.010");
+                go!: /Hangup
         
