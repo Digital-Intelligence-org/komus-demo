@@ -13,6 +13,7 @@ theme: /CustomerPickup
         
         state: PickupConditions
             intent!: /PickupConditions
+            intentGroup!: /PickupConditions
             # q!: PickupConditions
             script:
                 answer("a13.000.003");

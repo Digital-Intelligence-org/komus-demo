@@ -1,3 +1,81 @@
 <test>
     
+    <test-case id="Repeat0">
+        <context var="session"> {"lastState": "/CustomerPickup/PickupGeneral/StorageTime"} </context>
+        <q>Повторите, пожалуйста.</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="Repeat1">
+        <context var="session"> {"lastState": "/CustomerPickup/PickupGeneral/StorageTime"} </context>
+        <q>Извините, не поняла вас</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="Repeat2">
+        <context var="session"> {"lastState": "/CustomerPickup/PickupGeneral/StorageTime"} </context>
+        <q>Извините, не расслышал</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="Repeat3">
+        <context var="session"> {"lastState": "/CustomerPickup/PickupGeneral/StorageTime"} </context>
+        <q>Простите, не расслышал</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="Hello0">
+        <q>Привет</q>    
+        <a>a13.000.001</a>
+    </test-case>
+    
+    <test-case id="Hello1">
+        <q>Здравствуйте</q>    
+        <a>a13.000.001</a>
+    </test-case>
+    
+    <test-case id="Hello2">
+        <q>Добрый день</q>    
+        <a>a13.000.001</a>
+    </test-case>
+    
+    <test-case id="NoMatch0">
+        <q>Ага, скажите, пять дней — это пять рабочих или пять календарных?</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
+    <test-case id="NoMatch1">
+        <q>Добрый день, мне нужен степлер, помогите подобрать, пожалуйста.</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
+    <test-case id="NoMatch2">
+        <q>Не надо про самовывоз, я хочу выбрать степлер!</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
+    <test-case id="NoMatch3">
+        <q>В смысле не знаете? У вас на сайте больше двадцати моделей, сориентируйте по ним, пожалуйста.</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
+    <test-case id="NoMatch4">
+        <q>У вас есть ручки BIC?</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
+    <test-case id="NoMatch5">
+        <q>Промокоды есть у вас?</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
+    <test-case id="NoMatch6">
+        <q>Спец.одежду хотим заказать</q>    
+        <a>a13.000.015</a>
+    </test-case>
+    
 </test>

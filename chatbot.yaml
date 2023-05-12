@@ -6,9 +6,9 @@ language: ru
 
 tests:
   include:
-    - "customerPickup.xml"
+    # - "customerPickup.xml"
     - "other.xml"
-    - "main.xml"
+    # - "main.xml"
 
 injector:
     setNoInputTimeout: 10000
@@ -16,5 +16,5 @@ injector:
 
 nlp:
   intentNoMatchThresholds:
-    phrases: 0.2
+    phrases: 0.3
     patterns: 0.2

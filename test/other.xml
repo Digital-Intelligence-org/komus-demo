@@ -1,3 +1,43 @@
 <test>
     
+    <test-case id="Complaints0">
+        <q>Зарегистрируйте мою жалобу</q>    
+        <a>a13.000.012</a>
+    </test-case>
+    
+    <test-case id="Complaints1">
+        <q>Добрый день, хочу пожаловаться</q>    
+        <a>a13.000.012</a>
+    </test-case>
+    
+    <test-case id="Complaints2">
+        <q>Хочу пожаловаться на сотрудника вашего магазина.</q>    
+        <a>a13.000.012</a>
+    </test-case>
+    
+    <test-case id="AskForManager0">
+        <q>Здравствуйте, мне нужна менеджер Елена Данилина</q>    
+        <a>a13.000.013</a>
+    </test-case>
+    
+    <test-case id="AskForManager1">
+        <q>Соедините меня с моим менеджером</q>    
+        <a>a13.000.013</a>
+    </test-case>
+    
+    <test-case id="TransferToOperator0">
+        <q>Соедините меня с сотрудником</q>    
+        <a>a13.000.014</a>
+    </test-case>
+    
+    <test-case id="TransferToOperator1">
+        <q>Переведи на оператора</q>    
+        <a>a13.000.014</a>
+    </test-case>
+    
+    <test-case id="TransferToOperator2">
+        <q>Мне нужен оператор</q>    
+        <a>a13.000.014</a>
+    </test-case>
+    
 </test>
