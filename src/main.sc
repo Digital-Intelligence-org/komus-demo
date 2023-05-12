@@ -40,7 +40,6 @@ theme: /
         script:
             $session.phoneNumber = $dialer.getCaller();
             $session.setNoInputTimeout = 3000;
-        
 
     state: Hello
         intent: /Hello
