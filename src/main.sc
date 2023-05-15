@@ -43,7 +43,6 @@ theme: /
 
     state: Hello
         intent: /Hello
-        # q!: Hello
         if: $.session.lastState === "/NoMatch"
             go!: /NoMatch
         script:
@@ -51,7 +50,6 @@ theme: /
         
     state: Repeat || noContext=true
         intent!: /Repeat
-        # q!: Repeat
         script:
             if ($session.lastState == "/CustomerPickup/PickupGeneral") {
                 $session.pickupCounter = false;

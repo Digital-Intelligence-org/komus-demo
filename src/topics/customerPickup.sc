@@ -2,7 +2,6 @@ theme: /CustomerPickup
     
     state: PickupGeneral
         intent!: /PickupGeneral
-        # q!: PickupGeneral
         script: 
             if ($session.lastState == "/CustomerPickup/PickupGeneral" && $session.pickupCounter !== false) {
                 answer("a13.000.011");
@@ -15,13 +14,11 @@ theme: /CustomerPickup
         state: PickupConditions
             intent!: /PickupConditions
             intentGroup!: /PickupConditions
-            # q!: PickupConditions
             script:
                 answer("a13.000.003");
             
             state: Agree
                 intent: /Yes
-                # q: Yes
                 script:
                     var reply = sendSMS($session.phoneNumber, "Адреса пунктов самовывоза компании Комус: https://www.komus.ru/store/carrier-list/?code=Boxberry");
                     $.response.replies = $.response.replies || [];
@@ -31,19 +28,16 @@ theme: /CustomerPickup
                 
             state: Disagree
                 intent: /No
-                # q: No
                 go!: /CustomerPickup/PickupGeneral/AskForQuestions
                 
         state: StorageTime
             intent!: /StorageTime
-            # q!: StorageTime
             script:
                 answer("a13.000.018");
             go!: ../AskForQuestions
             
         state: PriceOfOrderForPickup
             intent!: /PriceOfOrderForPickup
-            # q!: PriceOfOrderForPickup
             script:
                 answer("a13.000.019");
             go!: ../AskForQuestions
@@ -66,13 +60,11 @@ theme: /CustomerPickup
                 
             state: Yes
                 intent: /Yes
-                # q: Yes
                 script:
                     answer("a13.000.009");
                 
             state: No
                 intent: /No
-                # q: No
                 script:
                     answer("a13.000.010");
                 go!: /Hangup
