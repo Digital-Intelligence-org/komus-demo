@@ -52,6 +52,8 @@ theme: /
     state: Repeat || noContext=true
         intent!: /Repeat
         # q!: Repeat
+        script:
+            $session.lastStateRepeated = $session.lastState;
         go!: {{$session.lastState}}
 
     state: NoMatch || noContext=true
@@ -79,9 +81,10 @@ theme: /
                 answer("a13.000.001");
         else:
             script:
-                if ($session.lastStateRepeated == $session.lastState) {
-                    $reactions.transition("/Hangup");}
-                $session.lastStateRepeated = $session.lastState
+                if ($session.lastStateTimeout == $session.lastState) {
+                    $reactions.transition("/Hangup");
+                }
+                $session.lastStateTimeout = $session.lastState;
             go!: {{$session.lastState}}
             
     state: Hangup

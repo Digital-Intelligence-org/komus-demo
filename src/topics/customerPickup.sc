@@ -4,7 +4,7 @@ theme: /CustomerPickup
         intent!: /PickupGeneral
         # q!: PickupGeneral
         script: 
-            if ($session.lastState == "/CustomerPickup/PickupGeneral") {
+            if ($session.lastState == "/CustomerPickup/PickupGeneral" && $session.lastStateRepeated !== "/CustomerPickup/PickupGeneral") {
                 answer("a13.000.011");
                 $reactions.transition("/Hangup");
             } else {
