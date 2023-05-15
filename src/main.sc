@@ -72,8 +72,12 @@ theme: /
     
     state: SpeechNotRecognized || noContext=true
         event!: speechNotRecognized
-        if: $session.lastState === "/SpeechNotRecognized"
+        script:
+            $session.timeoutCounter = ++timeoutCounter || 1;
+        if: $session.timeoutCounter == 2
             go!: /Hangup
+        # if: $session.lastState === "/SpeechNotRecognized"
+        #     go!: /Hangup
         elseif: $session.lastState === "/Start"
             script:
                 answer("a13.000.001");
