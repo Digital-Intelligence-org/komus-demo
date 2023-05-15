@@ -53,7 +53,9 @@ theme: /
         intent!: /Repeat
         # q!: Repeat
         script:
-            $session.lastStateRepeated = $session.lastState;
+            if ($session.lastState == "/CustomerPickup/PickupGeneral") {
+                $session.pickupCounter = false;
+            }
         go!: {{$session.lastState}}
 
     state: NoMatch || noContext=true
