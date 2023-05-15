@@ -72,16 +72,16 @@ theme: /
     
     state: SpeechNotRecognized || noContext=true
         event!: speechNotRecognized
-        script:
-            $session.timeoutCounter = ++timeoutCounter || 1;
-        if: $session.timeoutCounter == 2
+        if: $session.lastState === "/SpeechNotRecognized"
             go!: /Hangup
-        # if: $session.lastState === "/SpeechNotRecognized"
-        #     go!: /Hangup
         elseif: $session.lastState === "/Start"
             script:
                 answer("a13.000.001");
         else:
+            script:
+                if ($session.lastStateRepeated == $session.lastState) {
+                    $reactions.transition("/Hangup");}
+                $session.lastStateRepeated = $session.lastState
             go!: {{$session.lastState}}
             
     state: Hangup
