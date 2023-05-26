@@ -1,0 +1,134 @@
+<test>
+    
+    <test-case id="PickupGeneral0">
+        <q>Можно сделать платный самовывоз, если стоимость заказа меньше пятисот рублей?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral1">
+        <q>Добрый день, у меня вопрос по самовывозу.</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral2">
+        <q>Я хочу оформить самовывоз, скажите, это бесплатно?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral3">
+        <q>Добрый день, я хочу оформить заказ и забрать его пункта выдачи, это можно сделать?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral4">
+        <q>Да, скажите, самовывоз для всех товаров на сайте доступен?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral5">
+        <q>Подскажите насчёт самовывоза</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral6">
+        <q>Вопрос по поводу самовывоза</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral7">
+        <q>Меня интересует самовывоз</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral8">
+        <q>А самовывоз бесплатный?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral9">
+        <q>Самовывоз в любое время, когда магазин работает, доступен?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PickupGeneral10">
+        <q>Можно ли отказаться от товара в пункте выдачи, если оформлял самовывоз?</q>    
+        <a>a13.000.005</a>
+    </test-case>
+    
+    <test-case id="PriceOfOrderForPickup0">
+        <q>Какая минимальная стоимость заказа, чтобы можно было оформить самовывоз?</q>    
+        <a>a13.000.019</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="PriceOfOrderForPickup1">
+        <q>А самовывоз можно для товаров на любую сумму оформить?</q>    
+        <a>a13.000.019</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="PriceOfOrderForPickup2">
+        <q>От какой суммы самовывоз?</q>    
+        <a>a13.000.019</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="PriceOfOrderForPickup3">
+        <q>Самовывоз от какой суммы можно оформить?</q>    
+        <a>a13.000.019</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="PriceOfOrderForPickup4">
+        <q>Можно оформить самовывоз, если заказ на 350 рублей?</q>    
+        <a>a13.000.019</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="StorageTime0">
+        <q>Это вопрос по самовывозу. Заказ хранится пять рабочих дней?</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="StorageTime1">
+        <q>Добрый день, какой срок хранения заказа в пункте выдачи?</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="StorageTime2">
+        <q>Сколько будет лежать заказ в пункте выдачи?</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="StorageTime3">
+        <q>Как долго товар может лежать в пункте самовывоза?</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="StorageTime4">
+        <q>Сколько заказ хранится в пункте выдачи?</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+    
+    <test-case id="StorageTime5">
+        <q>А я смогу забрать товар через неделю после поступления в пункт самовывоза?</q>    
+        <a>a13.000.018</a>
+        <a>a13.000.006</a>
+    </test-case>
+
+    <test-case id="PickupConditions0">
+        <q>Как получить товар самовывозом?</q>    
+        <a>a13.000.003</a>
+    </test-case>
+    
+    <test-case id="PickupConditions1">
+        <q>В каком случае можно заказать товар и забрать из пункта выдачи?</q>    
+        <a>a13.000.003</a>
+    </test-case>
+
+</test>    

@@ -1,0 +1,27 @@
+{
+  "positions" : [ {
+    "id" : "/Start",
+    "x" : 240,
+    "y" : 315
+  }, {
+    "id" : "/Hello",
+    "x" : 240,
+    "y" : 833
+  }, {
+    "id" : "/Repeat",
+    "x" : 240,
+    "y" : 1288
+  }, {
+    "id" : "/NoMatch",
+    "x" : 620,
+    "y" : 833
+  }, {
+    "id" : "/SpeechNotRecognized",
+    "x" : 240,
+    "y" : 1810
+  }, {
+    "id" : "/Hangup",
+    "x" : 620,
+    "y" : 2910
+  } ]
+}

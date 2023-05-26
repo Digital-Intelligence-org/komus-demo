@@ -1,5 +1,4 @@
-name: zb-cailapub
-
+name: komus-demo
 entryPoint: main.sc
 
 botEngine: v2
@@ -7,9 +6,15 @@ language: ru
 
 tests:
   include:
-    - test.xml
+    # - "customerPickup.xml"
+    - "other.xml"
+    # - "main.xml"
+
+injector:
+    setNoInputTimeout: 10000
+    selectel: "https://405120.selcdn.ru/Komus_demo/"
 
 nlp:
   intentNoMatchThresholds:
-    phrases: 0.2
+    phrases: 0.3
     patterns: 0.2

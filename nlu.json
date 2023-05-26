@@ -1,96 +1,762 @@
 {
-    "project": {
-        "id": "zb-cailapub",
-        "name": "zb-cailapub",
-        "folder": "/platform"
+  "project" : {
+    "id" : "komus_demo-1000025184-CWs",
+    "name" : "komus_demo-1000025184-CWs",
+    "folder" : "/platform"
+  },
+  "settings" : {
+    "language" : "ru",
+    "spellingCorrection" : false,
+    "classificationAlgorithm" : "transformer",
+    "timezone" : "Europe/Moscow",
+    "extendedSettings" : {
+      "patternsEnabled" : true,
+      "tokenizerEngine" : "mystem",
+      "stsSettings" : {
+        "exactMatch" : 1,
+        "lemmaMatch" : 0.95,
+        "jaccardMatch" : 0.5,
+        "jaccardMatchThreshold" : 0.82,
+        "acronymMatch" : 1,
+        "synonymMatch" : 0,
+        "synonymContextWeight" : 0,
+        "patternMatch" : 1,
+        "throughPatternMatch" : 0,
+        "wordSequence1" : 0.8,
+        "wordSequence2" : 0.9,
+        "wordSequence3" : 1,
+        "intermediateAlternativesLimit" : 5,
+        "finalAlternativesLimit" : 5,
+        "idfShift" : 0,
+        "idfMultiplier" : 1,
+        "namedEntitiesRequired" : true
+      }
     },
-    "settings": {
-        "language": "ru",
-        "spellingCorrection": false,
-        "classificationAlgorithm": "sts",
-        "validation": {
-            "phraseValidationEnabled": true,
-            "answerValidationEnabled": true,
-            "phraseValidationThreshold": 0.5,
-            "answerValidationThreshold": 0.8
-        },
-        "timezone": "Europe/Moscow",
-        "extendedSettings": {
-            "tokenizerEngine": "mystem",
-            "useShared": false
-        }
+    "shared" : false,
+    "validation" : {
+      "phraseValidationEnabled" : false,
+      "answerValidationEnabled" : false,
+      "phraseValidationThreshold" : 0.5,
+      "answerValidationThreshold" : 0.8
+    }
+  },
+  "intents" : [ {
+    "path" : "/Complaints",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "у меня жалоба"
+    }, {
+      "text" : "зарегистрируйте жалобу"
+    }, {
+      "text" : "хочу пожаловаться"
+    }, {
+      "text" : "у меня претензия"
+    }, {
+      "text" : "претензия по товару"
+    }, {
+      "text" : "претензии по моему заказу"
+    }, {
+      "text" : "хочу оформить возврат денег"
+    }, {
+      "text" : "возврат денежных средств"
+    }, {
+      "text" : "обращалась с жалобой"
+    }, {
+      "text" : "мне грубо нахамили"
+    }, {
+      "text" : "допущена ошибка"
+    }, {
+      "text" : "ошибка в заказе"
+    }, {
+      "text" : "дефектный товар"
+    }, {
+      "text" : "бракованный товар"
+    }, {
+      "text" : "заказ бракованный"
+    }, {
+      "text" : "товар пришел с браком"
+    }, {
+      "text" : "дефект на товаре"
+    }, {
+      "text" : "обманули"
+    }, {
+      "text" : "хочу пожаловаться на сотрудника"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
     },
-    "intents": [
-        {
-            "path": "/пока",
-            "description": null,
-            "answer": null,
-            "customData": null,
-            "enabled": true,
-            "phrases": [
-                {
-                    "text": "пока",
-                    "entities": null
-                }
-            ],
-            "patterns": null,
-            "slots": null
-        },
-        {
-            "path": "/привет",
-            "description": null,
-            "answer": null,
-            "customData": null,
-            "enabled": true,
-            "phrases": [
-                {
-                    "text": "привет",
-                    "entities": null
-                }
-            ],
-            "patterns": null,
-            "slots": null
-        }
-    ],
-    "entities": [],
-    "enabledSystemEntities": [
-        "duckling.number",
-        "duckling.time",
-        "duckling.duration",
-        "duckling.phone-number",
-        "duckling.email",
-        "duckling.url"
-    ],
-    "systemEntities": [
-        {
-            "name": "duckling.number",
-            "version": "v2",
-            "enabled": true
-        },
-        {
-            "name": "duckling.time",
-            "version": "v2",
-            "enabled": true
-        },
-        {
-            "name": "duckling.duration",
-            "version": "v2",
-            "enabled": true
-        },
-        {
-            "name": "duckling.phone-number",
-            "version": "v2",
-            "enabled": true
-        },
-        {
-            "name": "duckling.email",
-            "version": "v2",
-            "enabled": true
-        },
-        {
-            "name": "duckling.url",
-            "version": "v2",
-            "enabled": true
-        }
-    ]
+    "patterns" : [ "* обман* *", "* [хочу/хотим/хотел [бы]] *жалова* на   *", "* претензи* *", "* брак* *", "* ошиб* *" ],
+    "priority" : 0
+  }, {
+    "path" : "/PickupConditions/DoYouHavePVZ",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "у вас есть пункты самовывоза"
+    }, {
+      "text" : "у вас есть пвз"
+    }, {
+      "text" : "у вас есть самовывоз"
+    } ],
+    "classificationRules" : {
+      "refs" : [ {
+        "entityName" : "classRule_8427",
+        "predicate" : "CONTAINS"
+      } ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/Hello",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "алло"
+    }, {
+      "text" : "добрый день"
+    }, {
+      "text" : "здравствуйте"
+    }, {
+      "text" : "меня слышно"
+    }, {
+      "text" : "привет"
+    }, {
+      "text" : "добрый вечер"
+    }, {
+      "text" : "доброе утро"
+    }, {
+      "text" : "доброго дня"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "([ну] [еще раз/[и] (опять/снова)/всем] (привет* [привет]/привеет/приивеет/приветик*/при вед/привед/п р и в е т/приве/прив/приф/приветствую/privet/здравствуй*/здравствуй те/здравствует е/здрас*/здравствуте/здравствуете/сдррасвуйте/здрас вуйте/здаров/здарова/здравия/здаровеньки/здоровеньки/здр/дратути/драсте/high/хэй/эй/хэй/хай/хаюшки/хэлло*/хелло*/халоу/хэлоу/шалом/шелом/hello/hi/{(добр*) (~утро/~день/ден/вечер*/вече/~ночь/[тебе/вам/всем] (~здоровье/здравия))}/~добрый [тебе/вам/всем] [~прекрасный] (~время/дня) суток/доброго времени суток/добрый/(салам/салаам/Salom/салом/ассалому) [алейкум/алайкум]/салют/гуд найт/слыш* [ты]) [еще раз/(опять/снова)])", "(саламчик/доброго/добрый)", "(алло/ало)" ],
+    "priority" : 0
+  }, {
+    "path" : "/Yes",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "да"
+    }, {
+      "text" : "всё правильно"
+    }, {
+      "text" : "верно"
+    }, {
+      "text" : "отправьте"
+    }, {
+      "text" : "согласен"
+    }, {
+      "text" : "хорошо"
+    }, {
+      "text" : "ок"
+    }, {
+      "text" : "давайте"
+    }, {
+      "text" : "можете отправить"
+    }, {
+      "text" : "отправляйте"
+    }, {
+      "text" : "окей"
+    }, {
+      "text" : "да, пожалуйста"
+    }, {
+      "text" : "да, спасибо"
+    }, {
+      "text" : "есть"
+    }, {
+      "text" : "да, есть вопросы"
+    }, {
+      "text" : "да давайте"
+    }, {
+      "text" : "да есть еще один вопрос"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "[ну] [конечно|всё|все|вроде|пожалуй|возможно] (да|даа|lf|ага|агась|точно|угу|верно|ок|ok|окей|окай|okay|оке|именно|подтвержд*|йес) [да|конечно|конешно|канешна|всё|все|вроде|пожалуй|возможно]" ],
+    "priority" : 0
+  }, {
+    "path" : "/No",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "нет"
+    }, {
+      "text" : "не надо"
+    }, {
+      "text" : "не хочу"
+    }, {
+      "text" : "нет, спасибо"
+    }, {
+      "text" : "не надо отправлять"
+    }, {
+      "text" : "нет вопросов"
+    }, {
+      "text" : "нет, больше ничего не нужно"
+    }, {
+      "text" : "больше нет вопросов"
+    }, {
+      "text" : "нет больше нет вопросов"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "(не (верн*/правильн*)/неверн*/неправильн*/неправельн*/ниверн*/ниправильн*/ниправельн*)", " (нет|неат|ниат|неа|ноуп|ноу|найн) [нет] [спасибо]" ],
+    "priority" : 0
+  }, {
+    "path" : "/StorageTime",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "срок хранения заказа для самовывоза"
+    }, {
+      "text" : "срок хранения заказа в пвз"
+    }, {
+      "text" : "срок хранения заказа в пункте самовывоза"
+    }, {
+      "text" : "сколько можно хранить заказ в пункте самовывоза"
+    }, {
+      "text" : "какой срок хранения заказа в пвз"
+    }, {
+      "text" : "сколько времени есть чтобы забрать заказ самовывозом"
+    }, {
+      "text" : "сколько хранится товар в пункте самовывоза"
+    }, {
+      "text" : "можно продлить срок хранения для заказа самовывозом"
+    }, {
+      "text" : "какой срок хранения заказа в пункте выдачи?"
+    }, {
+      "text" : "Сколько будет лежать заказ в пункте выдачи?"
+    }, {
+      "text" : "Как долго товар может лежать в пункте самовывоза?"
+    }, {
+      "text" : "Сколько заказ хранится в пункте выдачи?"
+    }, {
+      "text" : "А я смогу забрать товар через неделю после поступления в пункт самовывоза?"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/TransferToOperator",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "мне надо поговорить с человеком"
+    }, {
+      "text" : "можно позвать оператора"
+    }, {
+      "text" : "позовите оператора"
+    }, {
+      "text" : "оператор"
+    }, {
+      "text" : "дайте человека"
+    }, {
+      "text" : "хочу с живым сотрудником говорить"
+    }, {
+      "text" : "ты не сможешь помочь"
+    }, {
+      "text" : "нужен человек"
+    }, {
+      "text" : "соедините с оператором"
+    }, {
+      "text" : "нужен оператор"
+    }, {
+      "text" : "Соедините меня с сотрудником"
+    }, {
+      "text" : "Переведи на оператора"
+    }, {
+      "text" : "Мне нужен оператор"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "* оператор* * " ],
+    "priority" : 0
+  }, {
+    "path" : "/PickupGeneral",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "стоимость самовывоза"
+    }, {
+      "text" : "самовывоз платный"
+    }, {
+      "text" : "самовывоз бесплатный"
+    }, {
+      "text" : "как оформить самовывоз"
+    }, {
+      "text" : "оформление самовывоза"
+    }, {
+      "text" : "что нужно чтобы оформить самовывоз"
+    }, {
+      "text" : "Каким образом можно оформить самовывоз на товар"
+    }, {
+      "text" : "почему не могу выбрать самовывоз при оформлении заказа"
+    }, {
+      "text" : "Почему нет самовывоза?"
+    }, {
+      "text" : "почему самовывоз из магазина так долго, если товар есть в магазине"
+    }, {
+      "text" : "Нет самовывоза"
+    }, {
+      "text" : "информация о самовывозе"
+    }, {
+      "text" : "самовывоз"
+    }, {
+      "text" : "у вас есть самовывоз"
+    }, {
+      "text" : "сколько стоит самовывоз"
+    }, {
+      "text" : "а можно сами бесплатно заберем из магазина"
+    }, {
+      "text" : "за самовывоз надо доплачивать?"
+    }, {
+      "text" : "самовывоз платно или нет"
+    }, {
+      "text" : "сколько будет стоить самовывоз"
+    }, {
+      "text" : "цена самовывоза"
+    }, {
+      "text" : "а из магазина сколько стоит забрать"
+    }, {
+      "text" : "что дешевле доставка боксберри или забрать из магазина"
+    }, {
+      "text" : "я могу оформить заказ самовывозом"
+    }, {
+      "text" : "не понимаю как сделать самовывоз из магазина?"
+    }, {
+      "text" : "мы можем оформить самовывоз со склада "
+    }, {
+      "text" : "посмотрите пожалуйста почему у меня не доступен самовывоз"
+    }, {
+      "text" : "почему недоступен самовывоз да ничего габаритного нет в принципе"
+    }, {
+      "text" : "почему мне не доступен самовывоз"
+    }, {
+      "text" : "хотели бы их самовывозом оформить"
+    }, {
+      "text" : "не дает оформить самовывоз"
+    }, {
+      "text" : "почему то нету самовывоза хотя у вас он высвечивается"
+    }, {
+      "text" : "этот товар он не формируется самовывозом или только доставкой?"
+    }, {
+      "text" : "как можно оформить самовывоз"
+    }, {
+      "text" : "как пометить что заберем сами"
+    }, {
+      "text" : "нужен самовывоз но не можем в личный кабинет зайти"
+    }, {
+      "text" : "Это вопрос по самовывозу"
+    }, {
+      "text" : "Можно сделать платный самовывоз"
+    }, {
+      "text" : "Добрый день, у меня вопрос по самовывозу."
+    }, {
+      "text" : "Я хочу оформить самовывоз, скажите, это бесплатно?"
+    }, {
+      "text" : "Добрый день, я хочу оформить заказ и забрать его пункта выдачи, это можно сделать?"
+    }, {
+      "text" : "Да, скажите, самовывоз для всех товаров на сайте доступен?"
+    }, {
+      "text" : "Подскажите насчёт самовывоза"
+    }, {
+      "text" : "Вопрос по поводу самовывоза"
+    }, {
+      "text" : "Меня интересует самовывоз"
+    }, {
+      "text" : "самовывоз бесплатный"
+    }, {
+      "text" : "Можно сделать платный самовывоз, если стоимость заказа меньше пятисот рублей?"
+    }, {
+      "text" : "самовывоз это бесплатно"
+    } ],
+    "classificationRules" : {
+      "refs" : [ {
+        "entityName" : "classRule_9136",
+        "predicate" : "CONTAINS_NOT"
+      }, {
+        "entityName" : "classRule_2448",
+        "predicate" : "CONTAINS"
+      } ]
+    },
+    "patterns" : [ "* {самовывоз (в любое время/всегда/все время) доступен} *", "* если оформлял* самовывоз *", "* самовывоз* *" ],
+    "priority" : 0
+  }, {
+    "path" : "/Repeat",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Извините, не расслышал"
+    }, {
+      "text" : "Простите, не расслышал"
+    }, {
+      "text" : "говорите громче я едва вас слышу"
+    }, {
+      "text" : "помехи я вас не расслышал"
+    }, {
+      "text" : "чего чего"
+    }, {
+      "text" : "Алло вас не слышно говорите алло"
+    }, {
+      "text" : "Вас очень плохо слышно"
+    }, {
+      "text" : "А могли бы еще раз повторить вас очень плохо слышно"
+    }, {
+      "text" : "простите что вы сказали"
+    }, {
+      "text" : "Повторите, пожалуйста."
+    }, {
+      "text" : "Извините, не поняла вас"
+    }, {
+      "text" : "повторите еще раз"
+    }, {
+      "text" : "я не поняла что вы сказали"
+    }, {
+      "text" : "а можно погромче"
+    }, {
+      "text" : "еще раз и медленно"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/PriceOfOrderForPickup",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "почему не доступен самовывоз ручки за 2р"
+    }, {
+      "text" : "самовывоз от какой суммы заказа"
+    }, {
+      "text" : "самовывоз от какой суммы можно оформить?"
+    }, {
+      "text" : "сумма самовывоза"
+    }, {
+      "text" : "какая сумма у заказа для самовывоза"
+    }, {
+      "text" : "сумма заказа для самовывоза"
+    }, {
+      "text" : "на какую сумму можно оформить самовывоз"
+    }, {
+      "text" : "сколько должен стоить заказ для самовывоза"
+    }, {
+      "text" : "от какой суммы самовывоз"
+    }, {
+      "text" : "на сколько добрать товаров чтобы бесплатный самовывоз"
+    }, {
+      "text" : "как сделать чтобы стал бесплатный самовывоз"
+    }, {
+      "text" : "сколько не хватает до бесплатного самовывоза"
+    }, {
+      "text" : "Какая минимальная стоимость заказа, чтобы можно было оформить самовывоз?"
+    }, {
+      "text" : "А самовывоз можно для товаров на любую сумму оформить?"
+    }, {
+      "text" : "От какой суммы самовывоз?"
+    }, {
+      "text" : "Самовывоз от какой суммы можно оформить?"
+    }, {
+      "text" : "Почему не доступен самовывоз ручки за 2 рубля?"
+    }, {
+      "text" : " если стоимость заказа меньше пятисот рублей?"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "* (можно/могу) оформить самовывоз если заказ на @pymorphy.numb [рублей] *" ],
+    "priority" : 0
+  }, {
+    "path" : "/AskForManager",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "хотелось бы вот с вашим маркетологом пообщаться"
+    }, {
+      "text" : "хотелось бы вот с вашим менеджером пообщаться"
+    }, {
+      "text" : "хотелось бы вот с вашим торговым представителем пообщаться"
+    }, {
+      "text" : "как могу связаться с менеджером"
+    }, {
+      "text" : "как могу связаться с вашим сотрудником"
+    }, {
+      "text" : "как могу с вашим торговым представителем связаться "
+    }, {
+      "text" : "Соедините меня с моим менеджером"
+    }, {
+      "text" : "я с менеджером со своим хотела бы связаться"
+    }, {
+      "text" : "Подскажите, пожалуйста, как связаться с менеджером, который прикреплен к нашей организации? "
+    }, {
+      "text" : "Можно ли закрепить за нами постоянного менеджера?"
+    }, {
+      "text" : "Кто у нас менеджер?"
+    }, {
+      "text" : "контактный номер менеджера по обслуживанию юрлиц "
+    }, {
+      "text" : "Подскажите как можно связаться с менеджером, наша компания "
+    }, {
+      "text" : "Можно номер нашего менеджера "
+    }, {
+      "text" : "У нас нет персонального менеджера"
+    }, {
+      "text" : "где мне найти контакты персонального менеджера"
+    }, {
+      "text" : "нужен номер телефона менеджера который работает с нашей компанией"
+    }, {
+      "text" : "наш менеджер Павел Иванов?"
+    }, {
+      "text" : "как связаться с личным менеджером?"
+    }, {
+      "text" : "мне нужен телефон моего персонального менеджера"
+    }, {
+      "text" : "Кто наш менеджер?"
+    }, {
+      "text" : "Подскажите, как узнать есть ли закрепленный менеджер за организацией ?"
+    }, {
+      "text" : "Есть ли у нашей организации персональный менеджер? "
+    }, {
+      "text" : "Нужен номер телефона менеджера по поставке канцелярии"
+    }, {
+      "text" : "Здравствуйте, мне нужна менеджер "
+    }, {
+      "text" : "Пусть менеджер по нашему городу свяжется со мной."
+    }, {
+      "text" : "Можно связаться с менеджером"
+    }, {
+      "text" : "Соедините меня с моим менеджером"
+    }, {
+      "text" : "я с менеджером со своим хотела бы связаться"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "(@pymorphy.name @pymorphy.surn) [у вас] [работает] (менеджер*/маркетолог*/торг* представ*/сторудн*) ((соедини*/свяжи*) [меня])", "связаться с менеджером @pymorphy.name @pymorphy.surn", "* {([мне] (нужен/нужна)) менеджер* @pymorphy.name @pymorphy.surn} *", "* связаться с менеджер*  наша компания [АО/ООО/ИНН] * " ],
+    "priority" : 0
+  }, {
+    "path" : "/PickupConditions",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "как получить товар самовывозом"
+    }, {
+      "text" : "условия самовывоза"
+    }, {
+      "text" : "можно ли забрать самому"
+    }, {
+      "text" : "можно забрать самовывозом"
+    }, {
+      "text" : "можно забрать из пвз"
+    }, {
+      "text" : "можно самой забрать из магазина"
+    }, {
+      "text" : "где у вас пункты самовывоза"
+    }, {
+      "text" : "где можно забрать заказ самовывозом"
+    }, {
+      "text" : "где можно забрать заказ самому"
+    }, {
+      "text" : "где можно забрать заказ самостоятельно"
+    }, {
+      "text" : "Каким образом можно оформить самовывоз на товар"
+    }, {
+      "text" : "как получить товар самовывозом"
+    }, {
+      "text" : "условия самовывоза"
+    }, {
+      "text" : "Самовывоз из магазина доступен "
+    }, {
+      "text" : "Спасибо за информацию а самовывоз по какому городу формируете"
+    }, {
+      "text" : "ближайшая дата самовывоза у нас когда будет"
+    }, {
+      "text" : " можно самостоятельно забрать со склада"
+    }, {
+      "text" : "В каком случае можно заказать товар и забрать из пункта выдачи?"
+    }, {
+      "text" : "Как получить товар самовывозом?"
+    }, {
+      "text" : "расскажите про условия самовывоза"
+    }, {
+      "text" : "меня интересуют условия самовывоза"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  } ],
+  "entities" : [ {
+    "entity" : {
+      "name" : "classRule_9136",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : true
+    },
+    "records" : [ {
+      "type" : "pattern",
+      "rule" : [ "не (хочу/надо/нужно) [про/о] самовывоз*" ],
+      "value" : ""
+    } ]
+  }, {
+    "entity" : {
+      "name" : "classRule_2448",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : true
+    },
+    "records" : [ {
+      "type" : "pattern",
+      "rule" : [ "(самовывоз*/(забрать/вывезти) [его/её/их/товар/заказ] [прямо] [из/с] (магазин*/пункт* (выдачи/вывоза)/пвз))" ],
+      "value" : ""
+    } ]
+  }, {
+    "entity" : {
+      "name" : "classRule_8427",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : true
+    },
+    "records" : [ {
+      "type" : "pattern",
+      "rule" : [ "у вас есть (самовывоз*/пункт* [самовывоз*]/пвз)" ],
+      "value" : ""
+    } ]
+  } ],
+  "enabledSystemEntities" : [ "pymorphy.numb", "pymorphy.name", "pymorphy.surn", "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
+  "spellerDictionary" : [ ],
+  "systemEntities" : [ {
+    "name" : "mystem.geo",
+    "enabled" : false
+  }, {
+    "name" : "mystem.persn",
+    "enabled" : false
+  }, {
+    "name" : "mystem.obsc",
+    "enabled" : false
+  }, {
+    "name" : "mystem.patrn",
+    "enabled" : false
+  }, {
+    "name" : "mystem.famn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.romn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.latn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.numb",
+    "enabled" : true
+  }, {
+    "name" : "pymorphy.intg",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.abbr",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.name",
+    "enabled" : true
+  }, {
+    "name" : "pymorphy.surn",
+    "enabled" : true
+  }, {
+    "name" : "pymorphy.patr",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.geox",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.orgn",
+    "enabled" : false
+  }, {
+    "name" : "duckling.number",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.ordinal",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.amount-of-money",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.distance",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.time",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.date",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.time-of-day",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.duration",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.phone-number",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.email",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.url",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.interval",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "mlps-obscene.obscene",
+    "enabled" : false
+  }, {
+    "name" : "zb.datetime",
+    "enabled" : false
+  }, {
+    "name" : "zb.number",
+    "enabled" : false
+  } ],
+  "faq" : [ ],
+  "skills" : [ ]
 }
